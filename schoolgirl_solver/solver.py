@@ -159,7 +159,7 @@ class KirkmanSolver:
                             'num_days': self.num_days,
                             'num_possible_solutions': self.num_poss_sol,
                             'num_actual_solutions': len(self.solutions),
-                            'total_solve_time': self.total_time,
+                            'total_solve_time': datetime.timedelta(seconds = self.total_time),
                             'solution_num': i,
                             'day_num': j,
                             'group_num': k,
