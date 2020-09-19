@@ -214,3 +214,10 @@ def full_solve(num_girls, group_size):
     solver_object.solve()
     solver_object.write_solutions()
     return solver_object
+
+
+if __name__ == '__main__':
+    for n in range(2, 10):
+    for g in range(2, n + 1):
+        print(n, g)
+        full_solve(n, g)
