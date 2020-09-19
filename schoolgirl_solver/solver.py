@@ -218,6 +218,6 @@ def full_solve(num_girls, group_size):
 
 if __name__ == '__main__':
     for n in range(2, 10):
-    for g in range(2, n + 1):
-        print(n, g)
-        full_solve(n, g)
+        for g in range(2, n + 1):
+            print(n, g)
+            full_solve(n, g)
