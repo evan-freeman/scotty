@@ -90,16 +90,27 @@ class KirkmanSolver:
         print('*' * 100)
 
     def solve(self):
+        print()
+        print(f'{self.num_girls} girls, {self.group_size} group size')
         print(f'possible? {self.possible}')
+        print(f'There are {self.num_poss_sol:,} possible solutions to check...')
         if self.possible:
 
             for i, solution in enumerate(combinations(self.days, self.num_days)):
-                # if i%(10**6) == 0 and i > 1:
-                # print(f'Checking solution #{i:,}')
-                # times_elapsed = time.time() - self.start_time
-                # time_remaining = (times_elapsed) * (1 - (i / self.num_poss_sol)) ** (-1)
-                # print(f'At this rate, it will take {datetime.timedelta(seconds = time_remaining)} more seconds to complete this program')
-                # print()
+                if i%(10**6) == 0 and i > 1:
+                    print()
+                    print(f'Checking solution #{i:,}')
+                    
+                    times_elapsed = time.time() - self.start_time
+                    num_left = self.num_poss_sol - i
+                    rate = times_elapsed / i
+                    time_remaining = num_left * rate
+                    est_solve_time = rate * self.num_poss_sol
+
+                    print(f'run time: {datetime.timedelta(seconds = times_elapsed)}')
+                    print(f'Estimated total run time for this problem: {datetime.timedelta(seconds = est_solve_time)}')
+                    print(f'At this rate, it will take {datetime.timedelta(seconds = time_remaining)} to complete this program')
+                    print()
 
                 all_groups = list(group for day in solution for group in day)
                 pair_counts = {}
@@ -217,7 +228,9 @@ def full_solve(num_girls, group_size):
 
 
 if __name__ == '__main__':
-    for n in range(2, 10):
-        for g in range(2, n + 1):
-            print(n, g)
-            full_solve(n, g)
+    # for n in range(2, 10):
+    #     for g in range(2, n + 1):
+    #         print(n, g)
+    #         full_solve(n, g)
+
+    full_solve(9, 3)
